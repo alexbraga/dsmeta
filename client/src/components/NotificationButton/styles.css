@@ -1,0 +1,15 @@
+.btn-notify {
+  align-items: center;
+  background: rgba(255, 107, 114, 0.1);
+  border-radius: 10px;
+  border: 1px solid #ff6b72;
+  cursor: pointer;
+  display: flex;
+  height: 45px;
+  justify-content: center;
+  width: 45px;
+}
+
+.btn-notify img {
+  width: 19px;
+}
