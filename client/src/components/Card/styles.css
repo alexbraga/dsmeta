@@ -1,0 +1,94 @@
+.card {
+  background-color: #283142;
+  border-radius: 10px;
+  padding: 30px 10px;
+}
+
+.form-container {
+  margin-bottom: 16px;
+  max-width: 300px;
+}
+
+.form-control {
+  background-color: #1b2531;
+  border-radius: 5px;
+  border: 1px solid #384459;
+  color: #9aaabe;
+  font-size: 18px;
+  height: 46px;
+  padding: 0 20px;
+  width: 100%;
+}
+
+
+/* SALES TABLE */
+
+.sales-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.table-md-size,
+.table-lg-size {
+  display: none;
+}
+
+.sales-table thead {
+  color: #e9e9e9;
+  font-size: 16px;
+  font-weight: 700;
+  height: 55px;
+}
+
+.sales-table tbody {
+  color: #cfcfcf;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.sales-table tbody tr {
+  height: 74px;
+  border-top: 1px solid #5f6e82;
+}
+
+.sales-table tbody tr:nth-child(odd) {
+  background-color: #242c3b;
+}
+
+.sales-table tbody tr:hover > td {
+  background-color: #384459;
+}
+
+.btn-notify-container {
+  display: flex;
+  justify-content: center;
+}
+
+
+/* MEDIA-QUERY */
+
+@media (min-width: 576px) {
+  .card {
+    padding: 35px;
+  }
+
+  .table-md-size {
+    display: table-cell;
+  }
+
+  .sales-table tbody {
+    font-size: 18px;
+  }
+
+  .sales-table tbody tr {
+    height: 62px;
+  }
+}
+
+@media (min-width: 992px) {
+  .table-lg-size {
+    display: table-cell;
+  }
+}

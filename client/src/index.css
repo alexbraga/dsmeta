@@ -18,3 +18,22 @@ a:hover,
 a:visited {
   color: unset;
 }
+
+h2 {
+  color: #676fff;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+
+/* CARD CONTAINER */
+
+#sales {
+  padding: 40px 10px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
