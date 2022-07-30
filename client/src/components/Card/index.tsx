@@ -31,7 +31,6 @@ function Card() {
             selected={minDate}
             onChange={(date: Date) => setMinDate(date)}
             className="form-control"
-            dateFormat="dd/MM/yyyy"
           />
         </div>
         <div className="form-container">
@@ -39,7 +38,6 @@ function Card() {
             selected={maxDate}
             onChange={(date: Date) => setMaxDate(date)}
             className="form-control"
-            dateFormat="dd/MM/yyyy"
           />
         </div>
       </div>
@@ -58,45 +56,23 @@ function Card() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td className="table-lg-size">#123</td>
-              <td className="table-md-size">08/07/2022</td>
-              <td>Nome</td>
-              <td className="table-lg-size">15</td>
-              <td className="table-lg-size">10</td>
-              <td>$ 55300.00</td>
-              <td>
-                <div className="btn-notify-container">
-                  <NotificationButton />
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td className="table-lg-size">#123</td>
-              <td className="table-md-size">08/07/2022</td>
-              <td>Nome</td>
-              <td className="table-lg-size">15</td>
-              <td className="table-lg-size">10</td>
-              <td>$ 55300.00</td>
-              <td>
-                <div className="btn-notify-container">
-                  <NotificationButton />
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td className="table-lg-size">#123</td>
-              <td className="table-md-size">08/07/2022</td>
-              <td>Nome</td>
-              <td className="table-lg-size">15</td>
-              <td className="table-lg-size">10</td>
-              <td>$ 55300.00</td>
-              <td>
-                <div className="btn-notify-container">
-                  <NotificationButton />
-                </div>
-              </td>
-            </tr>
+            {sales.map((sale) => (
+              <tr key={sale.id}>
+                <td className="table-lg-size">{sale.id}</td>
+                <td className="table-md-size">
+                  {new Date(sale.date).toLocaleDateString()}
+                </td>
+                <td>{sale.sellerName}</td>
+                <td className="table-lg-size">{sale.visited}</td>
+                <td className="table-lg-size">{sale.deals}</td>
+                <td>$ {sale.amount.toFixed(2)}</td>
+                <td>
+                  <div className="btn-notify-container">
+                    <NotificationButton />
+                  </div>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
