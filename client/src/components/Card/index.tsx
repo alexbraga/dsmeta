@@ -1,8 +1,10 @@
 import "./styles.css";
 import "react-datepicker/dist/react-datepicker.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NotificationButton from "../NotificationButton";
 import DatePicker from "react-datepicker";
+import axios from "axios";
+import { BASE_URL } from "../../utils/request";
 
 function Card() {
   const min = new Date(new Date().setDate(new Date().getDate() - 365));
@@ -10,6 +12,12 @@ function Card() {
 
   const [minDate, setMinDate] = useState(min);
   const [maxDate, setMaxDate] = useState(max);
+
+  useEffect(() => {
+    axios.get(`${BASE_URL}/sales`).then((response) => {
+      console.log(response.data);
+    });
+  }, []);
 
   return (
     <div className="card">
