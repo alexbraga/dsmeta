@@ -39,7 +39,7 @@ function Card() {
             <tr>
               <th className="table-lg-size">ID</th>
               <th className="table-md-size">Date</th>
-              <th>Sales Consultant</th>
+              <th>Seller</th>
               <th className="table-lg-size">Visits</th>
               <th className="table-lg-size">Sales</th>
               <th>Total</th>
