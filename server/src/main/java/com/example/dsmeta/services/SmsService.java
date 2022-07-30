@@ -1,8 +1,11 @@
 package com.example.dsmeta.services;
 
+import com.example.dsmeta.entities.Sale;
+import com.example.dsmeta.repositories.SaleRepository;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -20,14 +23,21 @@ public class SmsService {
     @Value("${twilio.phone.to}")
     private String twilioPhoneTo;
 
-    public void sendSms() {
+    @Autowired
+    private SaleRepository saleRepository;
 
+    public void sendSms(Long saleId) {
         Twilio.init(twilioSid, twilioKey);
 
         PhoneNumber to = new PhoneNumber(twilioPhoneTo);
         PhoneNumber from = new PhoneNumber(twilioPhoneFrom);
 
-        Message message = Message.creator(to, from, "Test").create();
+        Sale sale = saleRepository.findById(saleId).get();
+        String date = sale.getDate().getMonthValue() + "/" + sale.getDate().getYear();
+        String msg = "Seller " + sale.getSellerName() + " was recognized by his/her efforts in " + date + ".\n" +
+                     "\nTotal sold: " + "$" + sale.getAmount();
+
+        Message message = Message.creator(to, from, msg).create();
 
         System.out.println(message.getSid());
     }
