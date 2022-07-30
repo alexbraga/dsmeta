@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.time.format.DateTimeFormatter;
+
 @Service
 public class SmsService {
     @Value("${twilio.sid}")
@@ -33,8 +35,9 @@ public class SmsService {
         PhoneNumber from = new PhoneNumber(twilioPhoneFrom);
 
         Sale sale = saleRepository.findById(saleId).get();
-        String date = sale.getDate().getMonthValue() + "/" + sale.getDate().getYear();
-        String msg = "Seller " + sale.getSellerName() + " was recognized by his/her efforts in " + date + ".\n" +
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM, yyyy");
+        String date = sale.getDate().format(formatter);
+        String msg = "Seller " + sale.getSellerName() + " was recognized for his/her efforts on " + date + ".\n" +
                      "\nTotal sold: " + "$" + sale.getAmount();
 
         Message message = Message.creator(to, from, msg).create();
