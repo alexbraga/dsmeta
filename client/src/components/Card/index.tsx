@@ -5,6 +5,7 @@ import NotificationButton from "../NotificationButton";
 import DatePicker from "react-datepicker";
 import axios from "axios";
 import { BASE_URL } from "../../utils/request";
+import { Sale } from "../../models/sale";
 
 function Card() {
   const min = new Date(new Date().setDate(new Date().getDate() - 365));
@@ -13,9 +14,11 @@ function Card() {
   const [minDate, setMinDate] = useState(min);
   const [maxDate, setMaxDate] = useState(max);
 
+  const [sales, setSales] = useState<Sale[]>([]);
+
   useEffect(() => {
     axios.get(`${BASE_URL}/sales`).then((response) => {
-      console.log(response.data);
+      setSales(response.data.content);
     });
   }, []);
 
