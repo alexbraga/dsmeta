@@ -58,15 +58,15 @@ Live demo available at: <a href="https://mydsmeta.netlify.app">https://mydsmeta.
 
 ### Mobile
 
-<img src="https://github.com/alexbraga/dsmeta/blob/master/screenshots/Screenshot-sm.png?raw=true" alt="Class Diagram" width="350" />
+<img src="https://github.com/alexbraga/dsmeta/blob/master/screenshots/screenshot-sm.png?raw=true" alt="Class Diagram" width="350" />
 
 ### Medium screen
 
-<img src="https://github.com/alexbraga/dsmeta/blob/master/screenshots/Screenshot-md.png?raw=true" alt="Class Diagram" width="450" />
+<img src="https://github.com/alexbraga/dsmeta/blob/master/screenshots/screenshot-md.png?raw=true" alt="Class Diagram" width="450" />
 
 ### Large screen
 
-<img src="https://github.com/alexbraga/dsmeta/blob/master/screenshots/Screenshot-lg.png?raw=true" alt="Class Diagram" width="750" />
+<img src="https://github.com/alexbraga/dsmeta/blob/master/screenshots/screenshot-lg.png?raw=true" alt="Class Diagram" width="650" />
 
 ---
 
