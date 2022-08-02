@@ -79,11 +79,11 @@ Live demo available at: <a href="https://mydsmeta.netlify.app">https://mydsmeta.
 
 #### Pre-requisites
 
-Before you begin, you will need to have the following tools installed on your
-machine:
+Before getting started, you will need to have the following tools installed on your machine:
 
 - [Git](https://git-scm.com)
 - [Java OpenJDK](https://www.oracle.com/java/technologies/downloads/)
+- [Maven](https://maven.apache.org/)
 
 In addition, you might also want an IDE to work with the code, like
 [IntelliJ IDEA](https://www.jetbrains.com/idea/) and [VS Code](https://code.visualstudio.com/).
@@ -95,7 +95,7 @@ git clone https://github.com/alexbraga/dsmeta.git
 ```
 
 #### Set the environment variables
-- Create `dsmeta/server/src/main/resources/application.properties`:
+- Create `dsmeta/server/src/main/resources/application.properties` and set the environment variables:
 
 ```
 twilio.sid=${TWILIO_SID}
@@ -152,6 +152,8 @@ $ npm install
 # Run the application in development mode
 $ npm run dev
 ```
+
+- The GUI will be available at `localhost:5173`
 
 ---
 
@@ -215,10 +217,19 @@ The following tools were used in the construction of the project:
 ## How to contribute
 
 1. Fork the project
-2. Create a new branch with your changes: `git checkout -b my-amazing-feature`
-3. Save your changes and create a commit message (in present tense) telling what
-   you did: `git commit -m "Add my-amazing-feature"`
-4. Submit your changes: `git push origin my-feature`
+2. Create a new branch with your changes:
+```
+git checkout -b my-amazing-feature
+```
+3. Save your changes and create a commit message (in present tense) telling what you did:
+```
+git commit -m "Add my amazing feature"
+```
+4. Submit your changes:
+```
+git push origin my-amazing-feature
+```
+5. Create a pull request
 
 ---
 
