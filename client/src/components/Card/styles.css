@@ -4,6 +4,10 @@
   padding: 30px 10px;
 }
 
+.form-label {
+  margin-bottom: 5px;
+}
+
 .form-container {
   margin-bottom: 16px;
   max-width: 300px;

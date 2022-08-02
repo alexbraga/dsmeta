@@ -29,6 +29,7 @@ function Card() {
     <div className="card">
       <h2>Sales</h2>
       <div>
+        <p className="form-label">From:</p>
         <div className="form-container">
           <DatePicker
             selected={minDate}
@@ -36,6 +37,7 @@ function Card() {
             className="form-control"
           />
         </div>
+        <p className="form-label">To:</p>
         <div className="form-container">
           <DatePicker
             selected={maxDate}
@@ -71,7 +73,7 @@ function Card() {
                 <td>$ {sale.amount.toFixed(2)}</td>
                 <td>
                   <div className="btn-notify-container">
-                    <NotificationButton saleId={sale.id}/>
+                    <NotificationButton saleId={sale.id} />
                   </div>
                 </td>
               </tr>
