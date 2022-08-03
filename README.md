@@ -133,12 +133,12 @@ $ mvn spring-boot:run
 
 #### API Endpoints
 
-- Get all orders in the database:
+- Get all sales in the database:
 
-  - `/orders`
+  - `/sales`
 
-- Get order by id:
-  - `/orders/{id}`
+- Send a SMS containing some information about a given seller:
+  - `/{id}/notification`
 
 #### Running the Front-end
 
