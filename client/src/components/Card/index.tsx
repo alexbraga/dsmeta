@@ -8,7 +8,7 @@ import { BASE_URL } from "../../utils/request";
 import { Sale } from "../../models/sale";
 
 function Card() {
-  const min = new Date(new Date().setDate(new Date().getDate() - 365));
+  const min = new Date("2021-06-27");
   const max = new Date();
 
   const [minDate, setMinDate] = useState(min);
