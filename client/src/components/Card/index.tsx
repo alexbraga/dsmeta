@@ -5,7 +5,8 @@ import NotificationButton from "../NotificationButton";
 import DatePicker from "react-datepicker";
 import axios from "axios";
 import { BASE_URL } from "../../utils/request";
-import { Sale } from "../../models/sale";
+import { SaleData } from "../../models/saleData";
+import Pagination from "../Pagination";
 
 function Card() {
   const min = new Date("2021-06-27");
@@ -13,17 +14,41 @@ function Card() {
 
   const [minDate, setMinDate] = useState(min);
   const [maxDate, setMaxDate] = useState(max);
+  const [currentPage, setCurrentPage] = useState(0);
 
-  const [sales, setSales] = useState<Sale[]>([]);
+  const [data, setData] = useState<SaleData>({
+    content: [
+      {
+        id: 0,
+        sellerName: "",
+        visited: 0,
+        deals: 0,
+        amount: 0,
+        date: "",
+      },
+    ],
+    totalElements: 0,
+  });
 
   useEffect(() => {
-    const minDateISO = minDate.toISOString().slice(0, 10);
-    const maxDateISO = maxDate.toISOString().slice(0, 10);
+    if (minDate != null && maxDate != null) {
+      const minDateISO = minDate.toISOString().slice(0, 10);
+      const maxDateISO = maxDate.toISOString().slice(0, 10);
 
-    axios.get(`${BASE_URL}/sales?minDate=${minDateISO}&maxDate=${maxDateISO}`).then((response) => {
-      setSales(response.data.content);
-    });
-  }, [minDate, maxDate]);
+      axios
+        .get(
+          `${BASE_URL}/sales?minDate=${minDateISO}&maxDate=${maxDateISO}&page=${currentPage}`
+        )
+        .then((response) => {
+          setData(response.data);
+        });
+    }
+  }, [minDate, maxDate, currentPage]);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <div className="card">
@@ -48,6 +73,13 @@ function Card() {
       </div>
 
       <div>
+        <br />
+        <Pagination
+          currentPage={currentPage}
+          totalCount={data.totalElements}
+          onPageChange={(page) => setCurrentPage(page)}
+        />
+        <br />
         <table className="sales-table">
           <thead>
             <tr>
@@ -61,7 +93,7 @@ function Card() {
             </tr>
           </thead>
           <tbody>
-            {sales.map((sale) => (
+            {data.content.map((sale) => (
               <tr key={sale.id}>
                 <td className="table-lg-size">{sale.id}</td>
                 <td className="table-md-size">
@@ -80,6 +112,12 @@ function Card() {
             ))}
           </tbody>
         </table>
+        <br />
+        <Pagination
+          currentPage={currentPage}
+          totalCount={data.totalElements}
+          onPageChange={handlePageChange}
+        />
       </div>
     </div>
   );
