@@ -8,7 +8,6 @@
 
 <p align="center">
   <a href="https://github.com/alexbraga/dsmeta/commits/master"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/alexbraga/dsmeta"></a>
-  <a href="https://heroku.com"><img alt="Heroku build status" src="https://img.shields.io/github/deployments/alexbraga/dsmeta/dsmeta-server?label=heroku&logo=heroku"></a>
   <a href="https://app.netlify.com"><img alt="Netlify build status" src="https://img.shields.io/netlify/d51f97e2-2c56-44a0-9b2d-bb4449b84098?logo=netlify"></a>
   <!-- <a href="https://github.com/alexbraga/dsmeta/blob/master/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/alexbraga/dsmeta?label=license"></a> -->
 </p>
@@ -30,7 +29,7 @@
 
 ## About
 
-<p align="justify">Sales listing Spring Boot API with a responsive React.ts layout. Features an H2 Database with Object-Relational Mapping made with Spring Data JPA (Hibernate), filtering results by date, Twilio Messaging API integration for SMS sending. Cloud-deployed application on Heroku (back-end) and Netlify (front-end), with CI/CD.
+<p align="justify">Sales listing Spring Boot API with a responsive React.ts layout. Features an H2 Database with Object-Relational Mapping made with Spring Data JPA (Hibernate), filtering by date and Twilio Messaging API integration for SMS sending. Deployed on Google Cloud Platform (back-end) and on Netlify (front-end), with CI/CD.
 
 Live demo available at: <a href="https://mydsmeta.netlify.app">https://mydsmeta.netlify.app</a></p>
 
@@ -47,9 +46,10 @@ Live demo available at: <a href="https://mydsmeta.netlify.app">https://mydsmeta.
 - Layered structure divided into Entities, Repositories, Services and Controllers
 - Classes and objects
 - Encapsulation, getters and setters
-- React hooks: useState and useEffect
+- React custom hooks, useState and useEffect
 - Axios requests
 - React Toastify
+- Pagination
 - Cloud deploy with CI/CD
 
 ---
@@ -82,10 +82,10 @@ Live demo available at: <a href="https://mydsmeta.netlify.app">https://mydsmeta.
 Before getting started, you will need to have the following tools installed on your machine:
 
 - [Git](https://git-scm.com)
-- [Java OpenJDK](https://www.oracle.com/java/technologies/downloads/)
+- [Java 11](https://www.oracle.com/java/technologies/downloads/)
 - [Maven](https://maven.apache.org/)
 
-In addition, you might also want an IDE to work with the code, like
+In addition, you'll need to register a [free] [Twilio](https://twilio.com) account and you might also want an IDE to work with the code, like
 [IntelliJ IDEA](https://www.jetbrains.com/idea/) and [VS Code](https://code.visualstudio.com/).
 
 #### Clone this repository
@@ -95,24 +95,17 @@ git clone https://github.com/alexbraga/dsmeta.git
 ```
 
 #### Set the environment variables
-- Create `dsmeta/server/src/main/resources/application.properties` and set the environment variables:
+- Set the environment variables in your IDE or replace the following placeholders after the `=` sign with their respective values directly at `dsmeta/server/src/main/resources/application.properties`:
 
 ```
+spring.profiles.active=${PROFILE}
 twilio.sid=${TWILIO_SID}
 twilio.key=${TWILIO_KEY}
 twilio.phone.from=${TWILIO_PHONE_FROM}
 twilio.phone.to=${TWILIO_PHONE_TO}
-
-spring.datasource.url=jdbc:h2:mem:testdb
-spring.datasource.username=sa
-spring.datasource.password=
-
-spring.h2.console.enabled=true
-spring.h2.console.path=/h2-console
-
-spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.format_sql=true
 ```
+- `Note`: Get the Twilio ID, token (key) and phone number (the `twilio.phone.from` property above) from the Twilio account you've created. You'll find them in the dashboard.
+- Replace `${PROFILE}` with `prod` if you want to use the properties set in `dsmeta/server/src/main/resources/application-prod.properties`. This file will take precedence over `application.properties` when the `prod` profile is active. You might also want to create an `application-dev.properties` for your development environment as well and set the profile to `dev`.
 
 #### Running the Back-end
 
@@ -120,16 +113,16 @@ spring.jpa.properties.hibernate.format_sql=true
 # Go to the server folder
 $ cd dsmeta/server
 
-# Install the dependencies
-$ mvn dependency:resolve
+# Install the dependencies and build the application
+$ mvn install
 
 # Compile and run the application
 $ mvn spring-boot:run
 ```
 
-- Alternatively, open `dsmeta/server` with your preferred IDE and run `DsmetaApplication.java`
+- Alternatively, open `dsmeta/server` with your preferred IDE and run `DsmetaApplication.java`.
 
-- The server will start at `localhost:8080`
+- The server will start at `localhost:8080` by default.
 
 #### API Endpoints
 
@@ -204,6 +197,7 @@ The following tools were used in the construction of the project:
 - Axios
 - React Toastify
 - React DatePicker
+- React Pagination
 
 > See the file
 > [package.json](https://github.com/alexbraga/dsmeta/blob/master/client/package.json)
@@ -237,7 +231,6 @@ git push origin my-amazing-feature
 
 <p>Alexandre Braga</p>
 
-[![Twitter Badge](https://img.shields.io/badge/-@_alex_braga-1ca0f1?style=flat-square&labelColor=1ca0f1&logo=twitter&logoColor=white)](https://twitter.com/_alex_braga)
 [![Linkedin Badge](https://img.shields.io/badge/-Alexandre%20Braga-blue?style=flat-square&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/alexgbraga/)
 [![Gmail Badge](https://img.shields.io/badge/-contato@alexbraga.com.br-c14438?style=flat-square&logo=Gmail&logoColor=white)](mailto:contato@alexbraga.com.br)
 
