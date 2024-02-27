@@ -2,23 +2,29 @@ import { useMemo } from "react";
 
 export const DOTS = "...";
 
-const range = (start, end) => {
+const range = (start: number, end: number) => {
   let length = end - start + 1;
   return Array.from({ length }, (_, idx) => idx + start);
 };
+
+interface PaginationProps {
+  totalCount: number;
+  pageSize?: number;
+  siblingCount?: number;
+  currentPage: number;
+}
 
 export const usePagination = ({
   totalCount,
   pageSize = 20,
   siblingCount = 1,
   currentPage,
-}) => {
+}: PaginationProps) => {
   const paginationRange = useMemo(() => {
     const totalPageCount = Math.ceil(totalCount / pageSize);
 
     // Pages count is determined as siblingCount + firstPage + lastPage + currentPage + 2*DOTS
     const totalPageNumbers = siblingCount + 5;
-
 
     // Case 1: If the number of pages is less than the page numbers we want to show in our paginationComponent, we return the range [1..totalPageCount]
     if (totalPageNumbers >= totalPageCount) {

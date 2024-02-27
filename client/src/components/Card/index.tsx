@@ -45,7 +45,7 @@ function Card() {
     }
   }, [minDate, maxDate, currentPage]);
 
-  const handlePageChange = (page) => {
+  const handlePageChange = (page: number) => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -77,7 +77,7 @@ function Card() {
         <Pagination
           currentPage={currentPage}
           totalCount={data.totalElements}
-          onPageChange={(page) => setCurrentPage(page)}
+          onPageChange={(page: number) => setCurrentPage(page)}
         />
         <br />
         <table className="sales-table">
