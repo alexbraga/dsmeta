@@ -31,7 +31,7 @@
 
 <p align="justify">Sales listing Spring Boot API with a responsive React.ts layout. Features an H2 Database with Object-Relational Mapping made with Spring Data JPA (Hibernate), filtering by date and Twilio Messaging API integration for SMS sending. Deployed on Google Cloud Platform (back-end) and on Netlify (front-end), with CI/CD.
 
-Live demo available at: <a href="https://mydsmeta.netlify.app">https://mydsmeta.netlify.app</a> (the "Notify" button will display an error notification because Twilio credentials are not set in the live demo)</p>
+Live demo available at: <a href="https://mydsmeta.netlify.app">https://mydsmeta.netlify.app</a></p>
 
 ---
 

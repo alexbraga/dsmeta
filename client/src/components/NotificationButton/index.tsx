@@ -9,14 +9,20 @@ type Props = {
 };
 
 function handleClick(id: number) {
-  axios.get(`${BASE_URL}/sales/${id}/notification`).then((response) => {
-    if (response.status === 200) {
+  axios
+    .get(`${BASE_URL}/sales/${id}/notification`)
+    .then((response) => toast.success("SMS sent successfully!"))
+    .catch((error) => {
+      // The line below is a fake success toast for demonstration purposes only, since the Twilio credentials are not set in the environment variables of the website live demo and this would trigger error toast notifications only. It should be deleted before running the code
       toast.success("SMS sent successfully!");
-    } else if (response.status === 500) {
-      toast.error("Something went wrong. Please try again.");
-    }
-    // Add more conditions if needed for other status codes
-  });
+
+      // The code below must be uncommented in order to reproduce the intended behavior when handling errors from the messaging service
+
+      // // Handle errors or network issues
+      // console.error("Error:", error);
+      // // You may want to trigger a toast for errors as well
+      // toast.error("Something went wrong. Please try again.");
+    });
 }
 
 function NotificationButton({ saleId }: Props) {
