@@ -198,6 +198,7 @@ The following tools were used in the construction of the project:
 - React Toastify
 - React DatePicker
 - React Pagination
+- React Loader Spinner
 
 > See the file
 > [package.json](https://github.com/alexbraga/dsmeta/blob/master/client/package.json)
