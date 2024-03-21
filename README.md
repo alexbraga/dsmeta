@@ -8,7 +8,7 @@
 
 <p align="center">
   <a href="https://github.com/alexbraga/dsmeta/commits/master"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/alexbraga/dsmeta"></a>
-  <a href="https://app.netlify.com"><img alt="Netlify build status" src="https://img.shields.io/netlify/d51f97e2-2c56-44a0-9b2d-bb4449b84098?logo=netlify"></a>
+  <a href="https://app.netlify.com/sites/mydsmeta/deploys"><img alt="Netlify build status" src="https://api.netlify.com/api/v1/badges/d51f97e2-2c56-44a0-9b2d-bb4449b84098/deploy-status"></a>
   <!-- <a href="https://github.com/alexbraga/dsmeta/blob/master/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/alexbraga/dsmeta?label=license"></a> -->
 </p>
 
@@ -95,6 +95,7 @@ git clone https://github.com/alexbraga/dsmeta.git
 ```
 
 #### Set the environment variables
+
 - Set the environment variables in your IDE or replace the following placeholders after the `=` sign with their respective values directly at `dsmeta/server/src/main/resources/application.properties`:
 
 ```
@@ -104,6 +105,7 @@ twilio.key=${TWILIO_KEY}
 twilio.phone.from=${TWILIO_PHONE_FROM}
 twilio.phone.to=${TWILIO_PHONE_TO}
 ```
+
 - `Note`: Get the Twilio ID, token (key) and phone number (the `twilio.phone.from` property above) from the Twilio account you've created. You'll find them in the dashboard.
 - Replace `${PROFILE}` with `prod` if you want to use the properties set in `dsmeta/server/src/main/resources/application-prod.properties`. This file will take precedence over `application.properties` when the `prod` profile is active. You might also want to create an `application-dev.properties` for your development environment as well and set the profile to `dev`.
 
@@ -213,17 +215,23 @@ The following tools were used in the construction of the project:
 
 1. Fork the project
 2. Create a new branch with your changes:
+
 ```
 git checkout -b my-amazing-feature
 ```
+
 3. Save your changes and create a commit message (in present tense) telling what you did:
+
 ```
 git commit -m "Add my amazing feature"
 ```
+
 4. Submit your changes:
+
 ```
 git push origin my-amazing-feature
 ```
+
 5. Create a pull request
 
 ---
@@ -236,8 +244,6 @@ git push origin my-amazing-feature
 <a href="https://www.linkedin.com/in/alexgbraga/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-blue?style=for-the-badge&logo=Linkedin&logoColor=white" alt="LinkedIn"></a>&nbsp;
 <a href="mailto:contato@alexbraga.com.br" target="_blank"><img src="https://img.shields.io/badge/-email-c14438?style=for-the-badge&logo=Gmail&logoColor=white" alt="E-Mail"></a>
 </div>
-
-
 
 <!-- ## License
 
